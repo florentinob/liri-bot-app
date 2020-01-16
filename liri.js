@@ -12,7 +12,7 @@ var Spotify = require('node-spotify-api');
 var action = process.argv[2];
 var value = process.argv[3];
 
-function mySwitch() {
+
     switch (action) {
         case "concert-this":
             getBands(value)
@@ -26,8 +26,10 @@ function mySwitch() {
         case "do-what-it-says":
             doWhatItSays()
             break;
+            default:
+            break;
     }
-}
+
 
 function getBands(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
@@ -44,14 +46,14 @@ function getBands(artist) {
 
 var spotify = new Spotify(keys.spotify);
 
-var getSongs = function (songName) {
-    if (songName === undefined) {
+function getSongs (songName) {
+    if (songName === "") {
         songName = "Payphone";
     }
     spotify.search(
         {
             type: "track",
-            query: userCommand
+            query: songName
         },
         function (err, data) {
             if (err) {
@@ -59,14 +61,51 @@ var getSongs = function (songName) {
                 return;
             }
 
-            var songs = data.tracks.items;
+            //var songs = data.tracks.items;
 
-            for (var i = 0; i < songs.length; i++) {
+            //for (var i = 0; i < songs.length; i++) {
                 //console.log(i);
-                console.log("Artist(s): " + songs[i].artists.map(getArtistNames));
-                console.log("Preview Song: " + songs[i].preview_url);
-                console.log("Album: " + songs[i].album.name);
-            }
+            console.log("Artist(s): ", data.tracks.items[0].album.artists[0].name);
+            console.log("Preview Song: ", data.tracks.items[0].preview_url);
+            console.log("Album: ", data.tracks.items[0].album.name);
         }
     );
-};
+}
+
+function getMovies (movieName) {
+    axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=c21b7b7e=" + movieName)
+    .then(function (data) {
+        var results = `
+        Title of the movie: ${data.data.Title}
+        Year the movie came out: ${data.data.Year}
+        IMDB Rating of the movie: ${data.data.Rated}
+        Rotten Tomatoes Rating of the movie: ${data.data.Ratings[1].Value}
+        Country where the movie was produced: ${data.data.Country}
+        Language of the movie: ${data.data.Language}
+        Plot of the movie: ${data.data.Plot}
+        Actors in the movie: ${data.data.Actors}`;
+        console.log(results)
+    })
+}
+
+function doWhatItSays() {
+    fs.readFile("random.txt", "utf8", function (err, data) {
+      data = data.split(",");
+      var action = data[0]
+      var value = data[1]
+      // getSongs(value)
+      switch (action) {
+        case "concert-this":
+          getBands(value)
+          break;
+        case "spotify-this-song":
+          getSongs(value)
+          break;
+        case "movie-this":
+          getMovies(value)
+          break;
+          default:
+          break;
+      }
+    });
+  }
