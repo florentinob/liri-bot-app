@@ -1,0 +1,22 @@
+{
+  "name": "liri-bot-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "keys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florentinob/liri-bot-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florentinob/liri-bot-app/issues"
+  },
+  "homepage": "https://github.com/florentinob/liri-bot-app#readme",
+  "dependencies": {
+    "axios": "^0.19.1"
+  }
+}
