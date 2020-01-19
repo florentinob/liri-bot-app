@@ -29,7 +29,6 @@ switch (action) {
         break;
 }
 
-
 function getBands(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
     .then(function (response) {
