@@ -12,20 +12,22 @@ REQUIRED TECH:
 
 APIs:
 
-Spotify (https://developer.spotify.com/)
-OMDB (http://www.omdbapi.com)
-Bands In Town (http://www.artists.bandsintown.com/bandsintown-api)
+- Spotify (https://developer.spotify.com/)
+- OMDB (http://www.omdbapi.com)
+- Bands In Town (http://www.artists.bandsintown.com/bandsintown-api)
 
 NPM Packages:
 
-Node-Spotify-API (https://www.npmjs.com/package/node-spotify-api)
-Axios (https://www.npmjs.com/package/axios)
-Moment (https://www.npmjs.com/package/moment)
-DotEnv (https://www.npmjs.com/package/dotenv)
+- Node-Spotify-API (https://www.npmjs.com/package/node-spotify-api)
+- Axios (https://www.npmjs.com/package/axios)
+- Moment (https://www.npmjs.com/package/moment)
+- DotEnv (https://www.npmjs.com/package/dotenv)
 
 APP COMMANDS:
 
-1) "CONCERT-THIS" - PLEASE REFER TO IMAGE GALLERY
+1) "CONCERT-THIS" - PLEASE REFER TO IMAGE FOLDER
+
+![Image 1](https://github.com/florentinob/liri-bot-app/blob/master/images/LIRI%20CONCERT-THIS.png)
 
 Searches the Bands in Town Artist Events API for an artist and renders the following information about each event to the terminal:
 
@@ -33,7 +35,9 @@ Searches the Bands in Town Artist Events API for an artist and renders the follo
 - Venue location
 - Date of the Event (using the format "MM/DD/YYYY")
 
-2) "SPOTIFY-THIS-SONG" - PLEASE REFER TO IMAGE GALLERY
+2) "SPOTIFY-THIS-SONG" - PLEASE REFER TO IMAGE FOLDER
+
+![Image 2](https://github.com/florentinob/liri-bot-app/blob/master/images/LIRI%20SPOTIFY-THIS-SONG.png)
 
 Displays the following information about the selected song in your terminal/bash window
 
@@ -42,7 +46,9 @@ Displays the following information about the selected song in your terminal/bash
 - A preview link of the song from Spotify
 - The album containing the song
 
-3) "MOVIE-THIS" - PLEASE REFER TO IMAGE GALLERY
+3) "MOVIE-THIS" - PLEASE REFER TO IMAGE FOLDER
+
+![Image 3](https://github.com/florentinob/liri-bot-app/blob/master/images/LIRI%20MOVIE-THIS.png)
 
 This will output the following movie information to your terminal/bash window:
 
@@ -55,6 +61,8 @@ This will output the following movie information to your terminal/bash window:
   * Plot of the movie
   * Actors in the movie
   
-4) "DO-WHAT-IT-SAYS" - PLEASE REFER TO IMAGE GALLERY
+4) "DO-WHAT-IT-SAYS" - PLEASE REFER TO IMAGE FOLDER
+
+![Image 4](https://github.com/florentinob/liri-bot-app/blob/master/images/LIRI%20DO-WHAT-IT-SAYS.png)
 
 - Runs "spotify-this-song" for "I Want it That Way"
