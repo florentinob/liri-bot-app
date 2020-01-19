@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # liri-bot-app
 
 ABOUT THE APP:
@@ -67,3 +68,7 @@ This will output the following movie information to your terminal/bash window:
 ![Image 4](https://mail.google.com/mail/u/0?ui=2&ik=812d47750f&attid=0.4&permmsgid=msg-a:r7496190073076868098&th=16fbb677ffe82d7f&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ_csvW4yXls8u8ub8eRmo1_NbWHxKM8edoFPwHgdHM3BBU14z2P2pM5KTbpjYxQRSCnZCGyXFVoJN-lIInWGxGCTw_OcyA0MLj3ddJ6lyQb1ogaXjR8VCTjmn0&disp=emb&realattid=ii_k5kc8urj3)
 
 - Runs "spotify-this-song" for "I Want it That Way"
+=======
+# LIRI Bot APP
+
+>>>>>>> e9ff880dd2a6436f19b4af0d27db48652331ffdc
