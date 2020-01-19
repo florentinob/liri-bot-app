@@ -2,33 +2,32 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 var fs = require("fs");
-var request = require("request");
 var moment = require("moment");
 var axios = require("axios");
-var Spotify = require('node-spotify-api');
+var Spotify = require("node-spotify-api");
 
-//var defaultMovie = "The Hangover";
+var spotify = new Spotify(keys.spotify);
 
 var action = process.argv[2];
 var value = process.argv[3];
 
 
-    switch (action) {
-        case "concert-this":
-            getBands(value)
-            break;
-        case "spotify-this-song":
-            getSongs(value)
-            break;
-        case "movie-this":
-            getMovies(value)
-            break;
-        case "do-what-it-says":
-            doWhatItSays()
-            break;
-            default:
-            break;
-    }
+switch (action) {
+    case "concert-this":
+        getBands(value)
+        break;
+    case "spotify-this-song":
+        getSongs(value)
+        break;
+    case "movie-this":
+        getMovies(value)
+        break;
+    case "do-what-it-says":
+        doWhatItSays()
+        break;
+        default:
+        break;
+}
 
 
 function getBands(artist) {
@@ -44,36 +43,24 @@ function getBands(artist) {
     });
 }
 
-var spotify = new Spotify(keys.spotify);
-
-function getSongs (songName) {
-    if (songName === "") {
-        songName = "Payphone";
-    }
-    spotify.search(
-        {
-            type: "track",
-            query: songName
-        },
-        function (err, data) {
-            if (err) {
-                console.log("Error occurred: " + err);
-                return;
-            }
-
-            //var songs = data.tracks.items;
-
-            //for (var i = 0; i < songs.length; i++) {
-                //console.log(i);
-            console.log("Artist(s): ", data.tracks.items[0].album.artists[0].name);
-            console.log("Preview Song: ", data.tracks.items[0].preview_url);
-            console.log("Album: ", data.tracks.items[0].album.name);
+function getSongs(songName) {
+    spotify.search({type:"track", query:songName}, function(err, data) {
+        if (err) {
+          return console.log("Error occurred: " + err);
         }
-    );
+        console.log(
+          "\n_Track Info_" +
+          "\nArtist: " + data.tracks.items[0].artists[0].name +
+          "\nSong: " + data.tracks.items[0].name +
+          "\nLink: " + data.tracks.items[0].external_urls.spotify +
+          "\nAlbum: " + data.tracks.items[0].album.name
+        );
+    });
 }
 
+
 function getMovies (movieName) {
-    axios.get("http://www.omdbapi.com/?i=tt3896198&apikey=c21b7b7e=" + movieName)
+    axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy")
     .then(function (data) {
         var results = `
         Title of the movie: ${data.data.Title}
@@ -90,22 +77,11 @@ function getMovies (movieName) {
 
 function doWhatItSays() {
     fs.readFile("random.txt", "utf8", function (err, data) {
+        if (err) {
+            return console.log("Error occurred: " + err);
+          }
       data = data.split(",");
-      var action = data[0]
       var value = data[1]
-      // getSongs(value)
-      switch (action) {
-        case "concert-this":
-          getBands(value)
-          break;
-        case "spotify-this-song":
-          getSongs(value)
-          break;
-        case "movie-this":
-          getMovies(value)
-          break;
-          default:
-          break;
-      }
+      getSongs(value)
     });
-  }
+}
